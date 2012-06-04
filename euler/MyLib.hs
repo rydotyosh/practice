@@ -18,7 +18,7 @@ dig n = f 0 n where
 
 -- split digits
 spldig :: (Integral i) => i -> [i]
-spldig n = reverse $ f [] n where
+spldig n = f [] n where
 	f rs n
 		| n==0 = rs
 		| otherwise = f (m:rs) d where
