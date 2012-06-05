@@ -15,7 +15,7 @@ cal a b c
 	| pandig $ concat [spldig a, spldig b, spldig c] = Just c
 	| otherwise = Nothing
 
-sol = sum $ nub $ catMaybes [cal a b (a*b)|a<-[2..98], b<-[a+1..987]]
+sol = sum $ nub $ catMaybes [cal a b (a*b)|a<-[2..98], b<-[a+1..9876]]
 
 main = print $ sol 
 
