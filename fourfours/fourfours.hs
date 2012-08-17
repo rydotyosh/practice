@@ -160,9 +160,13 @@ chkcnt fs = cnt == 4 where
 
 insbops [a,b,c,d] [x,y,z] = [
 	[a,b,x,c,y,d,z],
-	[a,b,x,c,d,y,z]]
+	[a,b,x,c,d,y,z],
+	[a,b,c,x,y,d,z],
+	[a,b,c,x,d,y,z],
+	[a,b,c,d,x,y,z]]
 insbops [a,b,c] [x,y,_] = [
-	[a,b,x,c,y]]
+	[a,b,x,c,y],
+	[a,b,c,x,y]]
 insbops [a,b] [x,_,_] = [
 	[a,b,x]]
 insbops _ _ = []
