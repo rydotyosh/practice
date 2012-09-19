@@ -2,17 +2,14 @@
 import Data.Numbers.Primes
 import Data.List
 
-isPandigit x = sort xs == [1..length xs] where
-	xs = digs x
-	digs x = f x where
-		f 0 = []
-		f x = (x `mod` 10) : f (x `div` 10)
+toDigit [] = 0
+toDigit (x:xs) = x + 10 * toDigit xs
 
-nums = [987654321,987654319..123456789]
+pandigit n = map (toDigit) . permutations $ [1..n]
 
-pands = filter isPandigit nums
+allPandigits = concat [pandigit n | n<-[1..9]]
 
-sol = head $ filter isPrime pands
+sol = maximum . filter isPrime $ allPandigits
 
 main = print sol
 
