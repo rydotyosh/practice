@@ -31,7 +31,7 @@ type Ment = Maybe Ent
 --gens = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444")
 gens = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 0.04 0.004 0.044 0.0044 0.0444 0.00444")
 --gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 1")
-gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 0.04 0.004 0.044 0.0044 0.0444 0.00444 1")
+gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 0.04 0.004 0.044 0.0044 0.0444 0.00444 1 0")
 
 -- [1,2] [3,4] -> [[1,3,4], [2,3,4]]
 concs :: [a] -> [a] -> [[a]]
@@ -45,7 +45,9 @@ ptn = [[]] >>= foldr (<=<) return (replicate 4 (sels gens))
 ptn1 = [[]] >>= foldr (<=<) return (replicate 4 (sels gens1))
 
 ment :: String -> Ment
-ment x = Just (read x, length$filter chkdig x) where
+ment x
+  | x == "0" = Just (0.0, 1)
+  | otherwise  = Just (read x, length$filter chkdig x) where
 	chkdig '4' = True
 	chkdig '1' = True
 	chkdig _ = False
