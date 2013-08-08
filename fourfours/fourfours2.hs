@@ -30,7 +30,8 @@ type Ment = Maybe Ent
 
 --gens = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444")
 gens = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 0.04 0.004 0.044 0.0044 0.0444 0.00444")
-gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 1")
+--gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 1")
+gens1 = map ment (words "4 0.4 44 4.4 0.44 444 44.4 4.44 0.444 0.04 0.004 0.044 0.0044 0.0444 0.00444 1")
 
 -- [1,2] [3,4] -> [[1,3,4], [2,3,4]]
 concs :: [a] -> [a] -> [[a]]
@@ -210,6 +211,6 @@ main = do
 	--day <- read <$> getLine
 	day <- read <$> head <$> getArgs
 	--let day = 4.0
-	let prob = probfc
+	let prob = probfc1
 	putStrLn $ unlines $ sol day prob
 
